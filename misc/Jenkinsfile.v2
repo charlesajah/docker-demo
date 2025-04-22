@@ -37,8 +37,11 @@ node {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_TOKEN')]) {
             sh 'echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USER --password-stdin'
             echo "Building image: dev1980/devcharles:${commit_id}"
-            docker build -t dev1980/devcharles:${BUILD_ID} .
-            docker push dev1980/devcharles:${BUILD_ID}
-    }
+
+            sh """
+              docker build -t dev1980/devcharles:${commit_id} .
+              docker push dev1980/devcharles:${commit_id}
+            """
+        }
     }
 }
