@@ -41,7 +41,6 @@ node {
 
             docker build -t dev1980/devcharles:${BUILD_ID} .
             docker push dev1980/devcharles:${BUILD_ID}
-            }
         }
     }
 }
