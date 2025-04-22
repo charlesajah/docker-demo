@@ -33,7 +33,7 @@ node {
       withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_TOKEN')]) {
         sh 'echo $DOCKERHUB_TOKEN | docker login -u $DOCKERHUB_USER --password-stdin docker.io'
         docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-        def app = docker.build('dev1980/devcharles:${commit_id}', '.').push()
+        def app = docker.build("dev1980/devcharles:${commit_id}", '.').push()
      }                                     
    }   
    }
