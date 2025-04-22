@@ -39,9 +39,8 @@ node {
 
             echo "Building image: dev1980/devcharles:${commit_id}"
 
-            docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-                def app = docker.build("dev1980/devcharles:${commit_id}")
-                app.push()
+            docker build -t dev1980/devcharles:${BUILD_ID} .
+            docker push dev1980/devcharles:${BUILD_ID}
             }
         }
     }
